@@ -1,15 +1,11 @@
 {
     "version": 2,
     "builds" : [
-        { 
-            "src": "./index.js", 
-            "use": "@now/node-server"
-        }
+        { "src": "package.json", "use": "@now/static-build" },
+        { "src": "/api/server.js", "use": "@now/node-server" }
     ],
     "routes": [
-        {
-            "src": "/(.*)",
-            "dest": "/"
-        }
+        { "src": "/api/.*", "dest": "/api/server.js" },
+        { "src": ".*", "dest": "/index.html" }
     ]
 }
